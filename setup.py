@@ -28,7 +28,7 @@ setup(
     entry_points={
         'console_scripts': [
             'webcam_publisher = orientation_detection.webcam_publisher:main',
-            'orientation_detector = orientation_detection.orientation_node:main',
+            'orientation_detector = orientation_detection.detector_node:main',
             'display_node = orientation_detection.display_node:main',
         ],
     },

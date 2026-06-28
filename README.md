@@ -3,7 +3,7 @@
 A ROS 2 Humble package that detects objects from a live webcam feed and estimates their
 orientation angle in real time using Principal Component Analysis (PCA).
 
-Built as part of **Phase 2 — TKM Internship Programme 2026** | CIXIO | Software & AI Team | Group G2 BETA
+Built as part of ROMI robobt reqruitment in my college.
 
 ---
 

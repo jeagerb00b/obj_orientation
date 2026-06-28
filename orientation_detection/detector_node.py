@@ -9,7 +9,7 @@ import numpy as np
 import math
 
 def pca_orientation(contour):
-    pts=contour.reshapre(-1,2).astype(np.float64)
+    pts=contour.reshape(-1,2).astype(np.float64)
     mean=np.mean(pts,axis=0)
     cov=np.cov((pts-mean).T)
     evals,evecs=np.linalg.eigh(cov)
@@ -55,6 +55,7 @@ class OrientationDetectorNode(Node):
             Float64MultiArray, '/orientation/angles', 10)
 
         self.bridge = CvBridge()
+        self.frame_count = 0
         self.get_logger().info(
             f'Detector ready | area=[{self.min_area}, {self.max_area}] | '
             f'invert_thresh={self.invert}')
@@ -79,6 +80,9 @@ class OrientationDetectorNode(Node):
             self.get_logger().error(f'cv_bridge error: {e}')
             return
 
+        self.frame_count += 1
+        if self.frame_count % 30 == 1:
+            self.get_logger().info(f'Detector received frame #{self.frame_count}')
         vis  = frame.copy()
         mask = self._preprocess(frame)
 
